@@ -1,0 +1,24 @@
+[package]
+name = "configure"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+color-eyre = "0.6.3"
+eyre = "0.6.12"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_dhall = "0.12.1"
+
+# Alpha version to make error types `Send`, for eyre; ref:
+# - https://github.com/rkyv/rkyv/issues/320
+# - https://github.com/rkyv/bytecheck/issues/25
+# - https://github.com/rkyv/bytecheck/pull/27
+# - https://github.com/rkyv/rkyv/pull/370#issuecomment-1490457292
+rkyv = { version = "0.8.0-alpha.2", features = [] }
+lexopt = "0.3.0"
+shellexpand = { version = "3.1.0", default-features = false, features = [
+    "tilde",
+    "path",
+    "base-0",
+] }
+prettydiff = { version = "0.6.4", default-features = false }
