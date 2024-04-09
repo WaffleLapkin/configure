@@ -313,7 +313,8 @@ fn main() -> eyre::Result<()> {
                     let path = Path::new(path);
 
                     if let Some(dir) = path.parent() {
-                        fs::create_dir_all(dir)?;
+                        fs::create_dir_all(dir)
+                            .with_context(|| format!("creating directory `{}`", dir.display()))?;
                     }
 
                     fs::write(&path, new.as_bytes())
